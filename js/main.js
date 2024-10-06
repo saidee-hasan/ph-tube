@@ -71,6 +71,10 @@ const getTimeString = (time) => {
 const displayVideo = (videos) => {
   const videoContainer = document.getElementById("videos");
   videoContainer.innerHTML = "";
+  if(videos.length == 0){
+    videoContainer.innerHTML = "No Content Here";
+    return;
+  }
   videos.forEach((video) => {
     console.log(video);
     const card = document.createElement("div");
