@@ -25,16 +25,34 @@ const loadVideos = async () => {
   }
 };
 loadVideos();
+const loadCategoryAlert = async(id)=>{
+    try {
+        const res = await fetch(
+         ` https://openapi.programming-hero.com/api/phero-tube/category/${id}`
+        );
+        const data = await res.json();
+        displayVideo(data.category)
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    
+
+}
 
 const displayCategory = (categories) => {
   const categoryContainer = document.getElementById("categoryBtn");
 
   categories.forEach((item) => {
     // create a btn
-    const button = document.createElement("button");
-    button.classList = "btn";
-    button.innerText = item.category;
-    categoryContainer.append(button);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.innerHTML = `
+    <button class="btn" onclick="loadCategoryAlert(${item.category_id})">${item.category}</button>
+    
+    
+    `;
+
+   
+    categoryContainer.append(buttonContainer);
   });
 };
 
@@ -43,6 +61,7 @@ loadCategory();
 const getTimeString = (time) => {
   const hour = parseInt(time / 3600);
   let remainingSeconds = parseInt(time % 3600);
+
   const minute = parseInt(time / 60);
   return `${hour} hour ${minute} minute ${remainingSeconds} seconds ago`;
 };
@@ -51,6 +70,7 @@ const getTimeString = (time) => {
 
 const displayVideo = (videos) => {
   const videoContainer = document.getElementById("videos");
+  videoContainer.innerHTML = "";
   videos.forEach((video) => {
     console.log(video);
     const card = document.createElement("div");
@@ -67,7 +87,9 @@ const displayVideo = (videos) => {
       ${
         video.others.posted_date?.length == 0
           ? ""
-          : `  <span class="absolute right-2 bottom-2 bg-black text-white rounded p-1">${getTimeString(video.others.posted_date)}</span>`
+          : `  <span class="absolute right-2 bottom-2 bg-black text-white rounded p-1">${getTimeString(
+              video.others.posted_date
+            )}</span>`
       }
     
   </figure>
