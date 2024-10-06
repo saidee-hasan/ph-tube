@@ -12,11 +12,16 @@ const loadCategory = async () => {
     console.error("Error:", error);
   }
 };
+
+document.getElementById('search-input').addEventListener('keyup',(e)=>{
+    loadVideos(e.target.value)
+
+})
 // loadVideos
-const loadVideos = async () => {
+const loadVideos = async (search ='') => {
   try {
     const res = await fetch(
-      "https://openapi.programming-hero.com/api/phero-tube/videos"
+      `https://openapi.programming-hero.com/api/phero-tube/videos?title=${search}`
     );
     const data = await res.json();
     displayVideo(data.videos);
