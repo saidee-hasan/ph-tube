@@ -15,7 +15,7 @@
   <body>
     <header>
       <nav
-        class="w-11/12 mx-auto py-3 items-center border-b flex justify-between"
+        class="w-11/12 mx-auto z-50 py-3 items-center border-b flex justify-between"
       >
         <div class="logo w-[100px]">
           <img src="./assets/Logo.png" alt="" />
@@ -38,12 +38,16 @@
           </label>
         </div>
         <div class="sort">
-          <button class="bg-orange-400 p-3 rounded-md w-20">Blog</button>
+          <button class="btn">Blog</button>
         </div>
       </nav>
     </header>
+    <!-- categories -->
+    <nav class="py-2 flex gap-5 justify-center" id="categoryBtn"></nav>
+    <main>
 
-    
+      <section id="videos" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-10 "></section>
+    </main>
 
     <script src="./js/main.js"></script>
   </body>
