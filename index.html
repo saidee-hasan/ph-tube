@@ -48,6 +48,20 @@
 
       <section id="videos" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5  "></section>
     </main>
+    <!-- Open the modal using ID.showModal() method -->
+
+<dialog id="customModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+   <div id="modal-content"></div>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
     <script src="./js/main.js"></script>
   </body>

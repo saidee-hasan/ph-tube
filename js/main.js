@@ -66,6 +66,32 @@ const getTimeString = (time) => {
   return `${hour} hour ${minute} minute ${remainingSeconds} seconds ago`;
 };
 
+
+const loadDetails = async(videoId)=>{
+    try {
+        const res = await fetch(
+          `https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`
+        );
+        const data = await res.json();
+        displayDetails(data.video)
+       console.log(data)
+      } catch (error) {
+        console.error("Error:", error);
+      }
+
+}
+const displayDetails = (video)=>{
+    console.log()
+    const detailContainer = document.getElementById("modal-content");
+    document.getElementById("customModal").showModal();
+    detailContainer.innerHTML=`
+    <img src='${video.thumbnail}' alt='' />
+    <p>${video.description
+}</p>
+   
+    `
+
+}
 // load video
 
 const displayVideo = (videos) => {
@@ -128,7 +154,7 @@ const displayVideo = (videos) => {
       : " "
   }
 
-  <p></p>
+  <button onclick="loadDetails('${video.video_id}')" class="btn btn-sm btn-error">Details</button>
 </div>
 
  
