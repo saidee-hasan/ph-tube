@@ -72,8 +72,20 @@ const displayVideo = (videos) => {
   const videoContainer = document.getElementById("videos");
   videoContainer.innerHTML = "";
   if(videos.length == 0){
-    videoContainer.innerHTML = "No Content Here";
+    videoContainer.classList.remove("grid")
+    videoContainer.innerHTML = `
+    <div class='min-h-screen  flex flex-col gap-5 justify-center items-center'>
+    <img src="../assets/Icon.png " alt=""/>
+    <h2 class="text-center text-xl font-bold ">
+    Not Content Here This Category
+    
+    </h2>
+    </div>
+    
+    `;
     return;
+  }else{
+    videoContainer.classList.add("grid")
   }
   videos.forEach((video) => {
     console.log(video);
