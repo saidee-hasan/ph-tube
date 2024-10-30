@@ -86,7 +86,7 @@ const loadDetails = async(videoId)=>{
 
 }
 const displayDetails = (video)=>{
-    console.log()
+    
     const detailContainer = document.getElementById("modal-content");
     document.getElementById("customModal").showModal();
     detailContainer.innerHTML=`
